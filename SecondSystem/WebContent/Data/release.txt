@@ -1,0 +1,264 @@
+
+﻿版本信息
+Microsoft SQL Server JDBC Driver 2.0
+2009 年 3 月
+
+
+简介
+------------
+此文件包含为 Microsoft SQL Server JDBC Driver 文档
+提供补充的最新信息或其他重要信息。
+在安装 JDBC 驱动程序之前，
+应通读此文件。
+
+您的反馈对于我们非常重要，我们将力求及时回复您的反馈。
+有关使用 JDBC 驱动程序新闻组和在线论坛
+提供反馈的信息，请参阅 
+http://msdn.microsoft.com/data/jdbc 上的 
+Microsoft SQL Server JDBC Driver 页。
+
+
+安装
+------------
+install.txt 中提供了有关安装 JDBC 驱动程序的说明。
+有关在 Windows 和 Unix 操作系统上安装 
+JDBC 驱动程序的信息，请参阅该文件。
+
+支持的操作系统
+---------------------------
+Microsoft SQL Server JDBC Driver 2.0 支持以下操作系统：
+Linux、Solaris、Unix、Windows XP Service Pack 3、Windows Server 2003 Service Pack 2、Windows Vista SP1 和 Windows Server 2008。
+
+请注意，该驱动程序不再支持 Windows 2000。
+
+版本内容
+----------------
+Microsoft SQL Server JDBC Driver 
+可执行 zip 或 tar 文件将以下文件
+解压缩到指定的位置（相对于所选安装目录）：
+
+<安装目录>\sqljdbc_<版本>\<语言>\install.txt
+<安装目录>\sqljdbc_<版本>\<语言>\release.txt
+<安装目录>\sqljdbc_<版本>\<语言>\license.txt
+<安装目录>\sqljdbc_<版本>\<语言>\sqljdbc.jar
+<安装目录>\sqljdbc_<版本>\<语言>\sqljdbc4.jar
+<安装目录>\sqljdbc_<版本>\<语言>\auth\x86\sqljdbc_auth.dll
+<安装目录>\sqljdbc_<版本>\<语言>\auth\x64\sqljdbc_auth.dll
+<安装目录>\sqljdbc_<版本>\<语言>\auth\ia64\sqljdbc_auth.dll
+<安装目录>\sqljdbc_<版本>\<语言>\help\default.htm
+<安装目录>\sqljdbc_<版本>\<语言>\help\index.htm
+<安装目录>\sqljdbc_<版本>\<语言>\help\toc.htm
+<安装目录>\sqljdbc_<版本>\<语言>\help\html\<文档页...>
+<安装目录>\sqljdbc_<版本>\<语言>\help\local\<文档文件...>
+<安装目录>\sqljdbc_<版本>\<语言>\help\samples\<示例文件...>
+<安装目录>\sqljdbc_<版本>\<语言>\xa\xa_install.sql
+<安装目录>\sqljdbc_<版本>\<语言>\xa\x86\sqljdbc_xa.dll
+<安装目录>\sqljdbc_<版本>\<语言>\xa\x64\sqljdbc_xa.dll
+<安装目录>\sqljdbc_<版本>\<语言>\xa\ia64\sqljdbc_xa.dll
+
+
+更改列表
+-----------
+以下是自 2007 年 10 月 1.2 版发布以来，在 Microsoft SQL Server JDBC Driver 
+中进行的更改的列表。
+
+157330 在之前的语句执行限制了行数时，
+       驱动程序不再从表中删除不正确的记录数。
+
+169210 语句取消现在始终将连接置于可用状态。
+
+182375 驱动程序现在可确保 com.microsoft.sqlserver.jdbc.SQLServerException 
+       类完全可序列化。
+
+194672 在 MSDTC 服务重新启动后，驱动程序现在正确重新连接到 
+       Microsoft 分布式事务处理协调器 (MS DTC)。
+
+201162 在应用程序设置连接字符串属性“selectMethod=cursor”
+       并且执行返回多个连续的空结果集的存储过程时，
+       驱动程序不再引发“无效 TDS”异常。
+
+208164 在 IBM AIX 平台上运行 JDBC 
+       驱动程序不再对性能有负面影响。
+
+129889 SQLServerResultSetMetadata.getTableName 
+       方法现在正确返回表名称。
+
+230786 调用 java.util.logging.Logger.getLogger() 
+       方法不再造成线程争用。
+
+251278 在连接关闭后，连接不再处于 FIN_WAIT_2 
+       或 CLOSE_WAIT TCP 连接状态。
+
+256392 驱动程序不再无法连接到命名实例
+       数据库镜像伙伴。
+
+36582 MANIFEST.MF 文件（放置于
+      sqljdbc.jar 或 sqljdb4.jar 内的 META-INF/ 目录下）现在为大写。
+
+
+已知问题
+------------
+下面是有关 Microsoft SQL Server JDBC Driver 的已知问题：
+
+
+1) 驱动程序与 SQL SERVER 2000 JDBC DRIVER 之间存在加载冲突
+
+如果您在同一个进程中同时加载 Microsoft SQL Server 2000 JDBC Driver 
+和 Microsoft SQL Server JDBC Driver（版本 1.0、1.1、1.2 和 2.0），
+在某些情况下，2000 版 JDBC 驱动程序将错误地接受 DriverManager.getConnection 
+方法调用，而该调用实际是针对 Microsoft SQL Server 
+JDBC Driver（版本 1.0、1.1、1.2 和 2.0）的。
+
+产生这一问题的原因是：如果首先加载 
+2000 版 JDBC 驱动程序，则此驱动程序将错误地接受 
+URL 前缀“jdbc:sqlserver://”。
+
+若要解决此问题，请先加载 Microsoft SQL Server JDBC Driver（版本 1.0、1.1、1.2 和 2.0）类，如下所示：
+
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); // 版本 1.0 或更高版本
+Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver"); // 2000 版
+
+这将确保 URL 前缀“jdbc:sqlserver://”由 
+Microsoft SQL Server JDBC Driver（版本 1.0、1.1、1.2 和 2.0）
+处理，而 URL 前缀“jdbc:microsoft:sqlserver://”由 
+2000 版 JDBC 驱动程序处理。
+
+
+2) 有关为准备的语句获得参数元数据的限制
+
+在将 SQLServerParameterMetaData 类用于准备的语句时，
+存在一些限制。SQL INSERT 语句需要可选的 
+INTO 子句并且 SQL DELETE 语句需要可选的 FROM 子句，
+才能正确地获得参数元数据。
+
+
+3) SQL SERVER 2000 数据转换限制
+
+当将 SQL Server 2000 与 JDBC 驱动程序一起使用时，
+以下数据转换限制适用：
+
+	- 不能将 String 数据转换为基础 money 
+	  或 smallmoney 列。
+	- 如果 sendStringParametersAsUnicode 连接字符串属性
+	  设置为 false，则可以将长度大于 4000 个字符的 
+	  String 数据转换
+	  为 char 或 varchar 基础列。
+
+
+4) 有关命名参数的限制
+
+在名称中包含左方括号“[”的存储过程不支持命名参数。
+例如，类似于“stor[edProc”的名称。
+请注意，这不影响对使用“[]”的存储过程
+名称的通常转义。
+
+
+5) XA 事务在 WINDOWS XP 上失败
+
+如果 SQL Server 在 Windows XP 上运行，
+则 XA 事务将无效，除非应用以下修补程序：
+
+http://support.microsoft.com/kb/922668
+
+请注意，仅当正参与 XA 事务的 SQL Server 正在 Windows XP 上
+运行时，才会出现此问题。在 Windows XP 上运行且与不在 
+Windows XP 上运行的远程 SQL Server 相连的
+客户端应用程序可以参与 XA 事务。
+此问题不适用于 Windows Server 2003。
+
+
+6) SUN SOLARIS 需要 GZIP 才能安装 JDBC 驱动程序
+
+在 Sun Solaris 计算机上安装 JDBC 驱动程序时，
+可能需要首先安装 GZIP 以便解压缩驱动程序文件。
+可从 www.gzip.org 下载 GZIP。
+
+
+7) 转换 BIGDECIMAL 值
+
+当您将 BigDecimal 值转换为字符串表示形式时，
+是否转换这些值将取决于您所使用的 JVM 版本。
+
+例如，以下代码说明了这些差异：
+
+String str = new BigDecimal("1E10").toString();
+System.out.println("String is " + str);
+//对于 JVM 1.4：打印输出 "String is 10000000000"
+//对于 JVM 1.5：打印输出 "String is 1E+10"
+
+当代码使用 BigDecimal 值时，若要实现一致的行为，应用程序在 JVM 1.5 上运行时应使用 BigDecimal.toPlainString 方法。
+
+
+8) 当使用集成安全性时，JDBC IPV6 连接的行为不一致
+
+当使用数字 IPV6 地址以及集成安全性时，建立连接可能需要较长时间，
+甚至会失败。只要您使用计算机名称，与 IPV6 服务器之间的
+集成安全性连接就将一直有效。
+
+
+9) Reader.mark(readAheadLimit) 在自适应模式下的大限制值
+
+在自适应模式下，如果应用程序使用 java.io.Reader.mark(readAheadLimit) 
+方法来标记流中由 getter 方法返回的位置，
+则可能引发 OutOfMemoryError。当 readAheadLimit 非常大（如 
+Integer.MAX_VALUE）时，可能发生此错误。
+
+若要解决此问题，请将 readAheadLimit 设置为较小的值。
+
+
+10) 在自适应模式下，数据类型转换失败
+
+在自适应模式下，如果使用 getCharacterStream 或 getAsciiStream 
+方法来检索字符值的 ResultSet 列或 CallableStatement OUT 参数，
+则可能引发 OutOfMemoryError。当数据类型转换对于该值而言必不可少时，将发生此错误。
+例如，当使用 getAsciiStream 方法检索 ntext 列数据类型
+或使用 getCharacterStream 方法检索 varchar(max) 列数据类型时，
+将要求进行数据类型转换。
+
+若要解决这一问题，请对该数据类型使用适当的 stream-getter 方法。
+
+
+11) 避免通过 PreparedStatement 或 CallableStatement 类创建临时表
+
+如果在执行查询时，应用程序通过 PreparedStatement 或 CallableStatement 创建临时表，则执行查询之后可能会删除这些临时表。
+
+为了解决这一问题，请使用 Statement 类执行此类查询；或者，
+如果您必须使用 PreparedStatement 类或 CallableStatement 类，
+则在数据库中创建一个表，当不再需要时删除该表。
+
+
+12) 在重新执行准备的语句前重置流参数
+ 
+执行 SQLServerPreparedStatement 可能会使用通过以下方法设置的 java.io.InputStream 和 java.io.Reader 参数值：
+setAsciiStream、setBinaryStream、setCharacterStream、setNCharacterStream、
+setBlob、setClob、setNClob 或 setObject。
+
+如果您想要重新执行同一准备的语句并且再次使用相同的 InputStream 
+或 Reader 流，则首先必须使用 java.io.InputStream.reset 
+方法或 java.io.Reader.reset 方法重置这些流。
+然后，您必须使用相应的 SQLServerPreparedStatement.set<Type> 
+方法设置受影响的参数值。
+
+否则，在重新执行同一准备的语句时，将引发 SQLServerException。
+这是 JDBC 规范定义的预期行为。
+ 
+
+13) 在执行准备的语句时，避免将相同的流用于多个参数
+ 
+如果在同一 PreparedStatement 对象中多个参数使用相同的流，将引发 SQLServerException。您必须将不同的流用于各参数。
+这是 JDBC 规范定义的预期行为。
+
+
+14) Connection.nativeSQL 方法不返回本机 SQL 语句
+
+Connection.nativeSQL(java.lang.String sql) 方法返回指定的输入参数 SQL 
+语句的字符串值。其原因在于，驱动程序并不将指定的 SQL 语句转换为 
+SQL Server 的本机 Transact-SQL 语法。
+
+
+15) 可伸缩查询超时
+
+使用非零参数调用 Statement.setQueryTimeout(int seconds) 
+方法将导致驱动程序在执行查询时使用额外的线程。
+如果具有查询超时的许多语句同时执行，
+上述情况可能导致驱动程序占用大量资源。

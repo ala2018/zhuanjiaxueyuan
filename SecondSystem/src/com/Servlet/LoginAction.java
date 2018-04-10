@@ -1,9 +1,15 @@
 package com.Servlet;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-import com.Business.LogonBusiness;;
+import com.Bean.ZhuanjiaBean;
+import com.Business.LogonBusiness;
+import com.Dao.*;
 public class LoginAction extends HttpServlet {
 
 	public LoginAction() {
@@ -20,19 +26,47 @@ public class LoginAction extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 LogonBusiness zjd=new LogonBusiness();
-		String             user=req.getParameter("zhuanjia_user");
-		String pwd         =req.getParameter("pwd");
-		if(zjd.Login(user, pwd)) {
+		//设置页面编码格式
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");//更改响应编码格式
+		String             user=req.getParameter("user");
 		
-			resp.sendRedirect("Home/logo.jsp");
-			
+		String pwd         =req.getParameter("pwd");
+		LogonBusiness lgd=new LogonBusiness();
+		if(req.getParameter("xuanze").equals("专家用户")) { 
+	    if(lgd.zhuanjia_Login(user,pwd))
+	    		{
+			resp.sendRedirect("Home/personHome.jsp");	
 		}
 		else {
 			resp.sendRedirect("fail.jsp");	
 			}
+		}else { 
+		    if(lgd.xueyuan_Login(user, pwd))
+    		{
+		resp.sendRedirect("Home/logo.jsp");	
+	}
+	else {
+		resp.sendRedirect("fail.jsp");	
+		}
+	}
+			
+			
 		
+	/*	
+		List<ZhuanjiaBean> zjl=new ArrayList<ZhuanjiaBean>();
+		ZhuanjiaBean zh=new ZhuanjiaBean();
+		zh.setZhuanjia_user(user);
+		zh.setZhuanjia_pwd(pwd);
+		zh.setZhuanjia_logindate(new Date()); 
+		zh.setZhuanjia_name("java");
+		zh.setZhuanjia_sex("男");
+		zjl.add(zh);
 		
+		SqlDao sqldao=new SqlDao();
+		sqldao.insert("Zhuanjia_table", "(?,?,?,?,?)", zjl);
+		*/
 	}
      
 }

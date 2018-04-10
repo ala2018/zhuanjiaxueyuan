@@ -20,14 +20,13 @@
 	<%
 	ArrayList<ZhuanjiaBean> zjlist=(ArrayList<ZhuanjiaBean>)session.getAttribute("zjlist");
 	//ArrayList<ArrayList<String>> zjlist=(ArrayList<ArrayList<String>>)session.getAttribute("zjlist");
-	int i;
-	for(i=0;i<zjlist.size();i++){
+    for(ZhuanjiaBean zjl:zjlist){
 	%>
        <tr>
-	    <td><%=zjlist.get(i).getZhuanjia_user() %></td>
-	   <td><%=zjlist.get(i).getZhuanjia_name()%></td>
-	     <td><%=zjlist.get(i).getZhuanjia_sex()%></td>
-	    <td><%=zjlist.get(i).getZhuanjia_logindate()%></td>
+	    <td><%=zjl.getZhuanjia_user() %></td>
+	   <td><%=zjl.getZhuanjia_name()%></td>
+	     <td><%=zjl.getZhuanjia_sex()%></td>
+	    <td><%=zjl.getZhuanjia_logindate()%></td>
 	  </tr>
 
 	 

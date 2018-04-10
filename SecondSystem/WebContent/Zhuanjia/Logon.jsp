@@ -42,7 +42,7 @@ line-height:30px;
 <div id=denglujiemian>
 <form action="login" method="post">
 <h2 align="center">用户登录</h2>
-<p align="center">用户：<input type="text" name="zhuanjia_user"></p>
+<p align="center">用户：<input type="text" name="user"></p>
 <p align="center">密码：<input type="password" name="pwd"> </p>
 <div id=zhuanjiaxueyuanxuanze>
 <p align="center">选择用户类别<br>

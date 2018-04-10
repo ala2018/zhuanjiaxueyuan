@@ -47,4 +47,13 @@
 	<servlet-name>down</servlet-name>
 	<url-pattern>/Zhuanjia/Home/Downaction</url-pattern>
 </servlet-mapping>
+
+<servlet>
+  <servlet-name>zhuceaction</servlet-name>
+  <servlet-class>com.Servlet.ZhuceAction</servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>zhuceaction</servlet-name>
+	<url-pattern>/Zhuanjia/Home/zhuce</url-pattern>
+</servlet-mapping>
 </web-app>

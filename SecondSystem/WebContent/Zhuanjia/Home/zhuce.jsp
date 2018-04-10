@@ -34,7 +34,7 @@ line-height:30px;
 <script type="text/javascript">
 function upperCase1()
 {
-	var x=document.getElementById("yhm").value;
+	var x=document.getElementById("accout").value;
 	if(x.length<16&&x.length>1)
 		text1.innerHTML="用户名合法"; 
 	else
@@ -60,14 +60,53 @@ function upperCase3()
 }
 function upperCase4()
 {
-	var x=document.getElementById("yhm").value;
+	var b=document.getElementById("name").value;
+	var x=document.getElementById("accout").value;
 	var y=document.getElementById("pwd1").value;
+	var z=document.getElementById("sex").value;
 	var pwd1=document.getElementById("pwd1");
 	var pwd2=document.getElementById("pwd2");
-	if(pwd1.value ==pwd2.value&&y.length<16&&y.length>1&&x.length<16&&x.length>1)
-	zhuce.style.display="block";
+	var emailRegex = /^\w+@\w+(\.\w+)+$/;  
+	var c=document.getElementById("email").value;
+	if(pwd1.value ==pwd2.value&&y.length<16&&y.length>1&&x.length<16&&x.length>1&&(z=="男"||z=="女")&&b!=""&&emailRegex.test(c))
+		document.getElementById("zhuce").style.display="block";
 	
 }
+function upperCase5()
+{
+	var x=document.getElementById("sex").value;
+	if(x=="男"||x=="女")
+		text5.innerHTML="性别正确";
+	else
+		text5.innerHTML="重新填写性别";
+	
+}
+
+function upperCase6()
+{
+	var emailRegex = /^\w+@\w+(\.\w+)+$/;  
+	var x=document.getElementById("email").value;
+	if(x == "") {
+		text6.innerHTML="格式错误";
+    } else 
+    	if(!emailRegex.test(x)) {
+    	text6.innerHTML="格式错误";
+    }
+        else
+        	text6.innerHTML="格式正确";
+	
+}
+function upperCase7()
+{
+	var x=document.getElementById("name").value;
+	if(x!="")
+		text4.innerHTML="格式正确";
+	else
+		text4.tnnerHTML="您没填写名字";
+	
+}
+
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -78,14 +117,20 @@ function upperCase4()
 <p> Welcome to SecondSystem!Please login in.</p>
 </div>
 <div id=zhucejiemian>
-<!-- <form action="zhuce" method="post"> -->
+<form action="zhuce" method="post"> 
 <h2 align="center">用户注册</h2>
-<p align="center">用户名：<input type="text" id="yhm" onblur="upperCase1()&upperCase4()"></p>
+<p align="center">用户名：<input type="text" name="accout1" id="accout" onblur="upperCase1()&upperCase4()"></p>
 <p id=text1>用户名长度小于15字节</p>
-<p align="center">输入密码：<input type="password" id="pwd1" onblur="upperCase2()&upperCase4()"> </p>
-<p id=text2>密码长度小于15字节，包含英文，数字，符号其中两个</p>
+<p align="center">输入密码：<input type="password" name="pwd11" id="pwd1"  onblur="upperCase2()&upperCase4()"> </p>
+<p id=text2>请输入密码</p>
 <p align="center">重复密码：<input type="password" id="pwd2" onblur="upperCase3()&upperCase4()"> </p>
 <p id=text3>确保两次输入的密码一致</p>
+<p align="center">姓名：<input type="text" name="name1" id="name"  onblur="upperCase7()&upperCase4()"> </p>
+<p id=text4>请输入您的姓名</p>
+<p align="center">性别：<input type="text" name="sex1" id="sex"  onblur="upperCase5()&upperCase4()"> </p>
+<p id=text5>请输入您的性别</p>
+ <p align="center">邮箱：<input type="text" name="email1" id="email" onblur="upperCase6()&upperCase4()"> </p>
+<p id=text6>请输入您的邮箱</p> 
 <div id=zhuanjiaxueyuanxuanze>
 <p align="center">选择用户类别<br>
 
@@ -93,9 +138,9 @@ function upperCase4()
 <input type="radio" name="xuanze" value="学员用户">学员用户
 </div>
 <div id=zhuceanniu>
-<input name=zhuce type="submit" value="点击注册" onclick="upperCase4()" style=display:none>
+<input id=zhuce type="submit" value="点击注册"  style=display:none>
 </div>
-<!-- </form> -->
+</form> 
 </div>
 </div>
 </body>

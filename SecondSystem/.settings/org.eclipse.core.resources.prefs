@@ -1,8 +1,10 @@
 eclipse.preferences.version=1
 encoding//src/com/Business/FileBusiness.java=UTF-8
 encoding//src/com/Business/LogonBusiness.java=UTF-8
+encoding//src/com/Business/mailBusiness.java=UTF-8
 encoding//src/com/Dao/SqlDao.java=UTF-8
 encoding//src/com/Servlet/DownfileAction.java=UTF-8
+encoding//src/com/Servlet/ForumAction.java=UTF-8
 encoding//src/com/Servlet/LoginAction.java=UTF-8
 encoding//src/com/Servlet/PublishArticleAction.java=UTF-8
 encoding//src/com/Servlet/SavefileAction.java=UTF-8

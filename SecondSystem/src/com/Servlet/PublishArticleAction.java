@@ -42,7 +42,7 @@ public class PublishArticleAction extends HttpServlet {
 	 
 	     artbean.setId((int)((Math.random()*9+1)*10000));
 	     artbean.setContents(req.getParameter("contents"));
-	     artbean.setClassification(req.getParameter("Classification"));
+	     artbean.setClassification("ADS");
 	     artbean.setAuthor(req.getParameter("author"));
 	     List<ArticleBean> list=new ArrayList<ArticleBean>();
 	     list.add(artbean);

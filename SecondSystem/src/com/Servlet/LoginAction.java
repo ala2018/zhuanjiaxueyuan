@@ -37,10 +37,7 @@ public class LoginAction extends HttpServlet {
 		if(req.getParameter("xuanze").equals("专家用户")) { 
 	    if(lgd.zhuanjia_Login(user,pwd))
 	    		{
-	    	String page="personHome.jsp";
-	    	req.getSession().setAttribute("user",lgd.getUser_info());
-	    	resp.sendRedirect(page);
-	    	//req.getRequestDispatcher(page).forward(req, resp);
+			resp.sendRedirect("personHome.jsp");	
 		}
 		else {
 			resp.sendRedirect("fail.jsp");	
@@ -48,9 +45,7 @@ public class LoginAction extends HttpServlet {
 		}else { 
 		    if(lgd.xueyuan_Login(user, pwd))
     		{
-		    	String page="personHome.jsp";
-		    	req.getSession().setAttribute("user", lgd.getUser_info());
-		    	resp.sendRedirect(page);
+		resp.sendRedirect("logo.jsp");	
 	}
 	else {
 		resp.sendRedirect("fail.jsp");	

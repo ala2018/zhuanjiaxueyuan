@@ -6,54 +6,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>
-
-div.caidan {
-    line-height:30px;
-    background-color:#F0F8FF;
-     position: absolute;
-    height:42px;
-    width:800px;
-    margin-left:210px;
-    border:0px solid #000;	      
-}
-a.wenzhangbiaoti{text-decoration:none;
-    background-color:#F0F8FF;
-}
-a.zuozhe{text-decoration:none;
-    background-color:#F0FFF0;
-}
-a.fenlei{text-decoration:none;
-    background-color:#F0FFF0;
-}
-</style>
 <title>show</title>
 </head>
 <body>	
 	<%
-	int i=0;
-	String hre="";
 	ArrayList<ArticleBean> list=(ArrayList<ArticleBean>)session.getAttribute("list");
 	//ArrayList<ArrayList<String>> zjlist=(ArrayList<ArrayList<String>>)session.getAttribute("zjlist");
     for(ArticleBean art:list){
-    	hre="showwenzhang.jsp?tindex="+i;
-    	i++;
 	%>
 
 <fieldset>
 <legend>文章</legend>
-<div>
-<h4><a class="wenzhangbiaoti" href=<%=hre%>><%=art.getTitle()%></a></h1>
-<p><a class="zuozhe" href="" ><%="作者:"+art.getAuthor()%></a></p>
-<p><a class="fenlei" href=""><%="文章分类:"+art.getClassification()%></a></p>
-<div><p>简介</p><%=art.getContents().substring(0,100)+"..."%></div>
-</div>
-<div><p>时间:<%=art.getDate()%></p></div>
+<input type="text" name="title" style="width:800px" value=<%=art.getTitle()%>>
+<br>
+<br>
+<textarea name="contents" style="font-size:20px;height:200px;width:800px"><%=art.getTitle()%></textarea>
+<br>
+<input type="text" style=display:none name="author" style="width:800px" value="郭襄">
 </fieldset>
 	 
-	<% } 
-	//session.removeAttribute("list");
-	%>
+	<% } %>
 	</table>
 
 </body>

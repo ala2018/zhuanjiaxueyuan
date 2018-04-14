@@ -2,7 +2,6 @@ package com.Business;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Bean.UserBean;
 import com.Bean.ZhuanjiaBean;
 import com.Dao.SqlDao;
 
@@ -10,7 +9,6 @@ import com.Dao.SqlDao;
 public class LogonBusiness {
 	SqlDao sqldao;
 	ZhuanjiaBean zjb;
-	UserBean                 user_info;
 	public LogonBusiness() {
 		super();
 			 sqldao    = new SqlDao();
@@ -22,6 +20,7 @@ public class LogonBusiness {
 	public List<ZhuanjiaBean> getAllmessage(String where){
 		List<ZhuanjiaBean> zjlist =new ArrayList<ZhuanjiaBean>();
 		ZhuanjiaBean             zjb;
+        
 		String t="zhuanjia_user zhuanjia_name zhuanjia_sex zhuanjia_logindate";
 		String sql=" select * from Zhuanjia_table "+where;
 	        ZhuanjiaBean zhuanjia=new ZhuanjiaBean();
@@ -39,29 +38,18 @@ public class LogonBusiness {
 		return zjlist;
 		
 	}
-	
-	
-	public UserBean getUser_info() {
-		return user_info;
-	}
-
-
-
 	//专家登录检查
 	public boolean zhuanjia_Login(String user,String pwd) {
 		          user=user.trim();
 		          pwd=pwd.trim();
 		           
 		      String sql="select * from Zhuanjia_table where accout ='"+user+"' and pwd='"+pwd+"'";
-		     String t="accout sex name";
+		     String t="accout pwd";
 		      ArrayList<ArrayList<String>> rs  =sqldao.getAllmessage(sql, t);
 		    	  
 		              sqldao.closeAll();
-				 if(rs.size()==1) { 
-					   user_info=new UserBean(rs.get(0).get(0),rs.get(0).get(1),rs.get(0).get(2));
+				 if(rs.size()==1) 
 				       return true;
-				           
-				 }
 				 
 		return false;
 	}
@@ -77,11 +65,8 @@ public class LogonBusiness {
 		    	  
 		              sqldao.closeAll();
 				 if(rs.size()==1) 
-				 { 
-					   user_info=new UserBean(rs.get(0).get(0),rs.get(0).get(1),rs.get(0).get(2));
 				       return true;
-				           
-				 }
+				 
 		return false;
 	}
 

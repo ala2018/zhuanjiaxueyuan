@@ -12,6 +12,7 @@ public class ArticleBean {
 	String author;
 	public ArticleBean() {
 		super();
+	
 	}
 	public ArticleBean(int id, String title, String contents, Date date,
 			String classification, String author) {

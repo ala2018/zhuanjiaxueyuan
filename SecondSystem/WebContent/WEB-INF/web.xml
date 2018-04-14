@@ -64,4 +64,15 @@
 	<servlet-name>publishaction</servlet-name>
 	<url-pattern>/Zhuanjia/Home/pubilsharticle</url-pattern>
 </servlet-mapping>
+
+<servlet>
+  <servlet-name>Verification</servlet-name>
+  <servlet-class>com.Servlet.MailAction</servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>Verification</servlet-name>
+	<url-pattern>/Zhuanjia/Home/Mailaction</url-pattern>
+</servlet-mapping>
+
+
 </web-app>

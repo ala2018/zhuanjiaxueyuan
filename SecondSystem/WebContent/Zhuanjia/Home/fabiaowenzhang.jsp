@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.Bean.UserBean" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,11 +63,23 @@
 <form action="pubilsharticle" method="post">
 <fieldset>
 <legend>发表文章</legend>
-<input type="text" name="zixunsousuo" style="width:800px" value="题目">
+<li>选择文章分类<select name="Classification" value="">
+       <option value="数学" >数学</option>
+       <option value="物理" >物理</option>
+        <option value="文学" >文学</option>
+        <option value="经济" >经济</option>
+        <option value="教育" >教育</option>
+</select>
+</li>
+<br>
+<li>标题
+<input type="text" name="title" style="width:750px" value="">
+</li>
 <br>
 <br>
-<textarea style="font-size:20px;height:200px;width:800px">内容</textarea>
+<textarea name="contents" style="font-size:20px;height:200px;width:800px">内容</textarea>
 <br>
+<input type="text" style=display:none name="author" style="width:800px" value=<%=request.getParameter("user")%>>
 <input type="submit" value="发表" style="height:55px;width:140px;font-size:20px"></fieldset>
 </form>
 </div>

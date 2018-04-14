@@ -27,7 +27,7 @@
   </servlet>
 <servlet-mapping>
 	<servlet-name>loginaction</servlet-name>
-	<url-pattern>/Zhuanjia/login</url-pattern>
+	<url-pattern>/Zhuanjia/Home/login</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -55,5 +55,13 @@
 <servlet-mapping>
 	<servlet-name>zhuceaction</servlet-name>
 	<url-pattern>/Zhuanjia/Home/zhuce</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>publishaction</servlet-name>
+  <servlet-class>com.Servlet.PublishArticleAction</servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>publishaction</servlet-name>
+	<url-pattern>/Zhuanjia/Home/pubilsharticle</url-pattern>
 </servlet-mapping>
 </web-app>

@@ -57,6 +57,7 @@ public class ZhuceAction extends HttpServlet {
 				    ZhuceBusiness zcb=new ZhuceBusiness();
 				    zcb.zhuce_xueyuan("Xuesheng_table", list); 
 							}
+				resp.sendRedirect("Logon.jsp");
 					
 	    
 	}

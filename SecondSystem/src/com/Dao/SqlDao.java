@@ -235,6 +235,7 @@ public class SqlDao {
 			String getMethodName="";
 			for(int i=0;i<colname.length;i++) {
 			//属性首字母转为大写。。。。。
+				System.out.println(colname[i]);
 			String fristletter=colname[i].substring(0, 1).toUpperCase();
 			 getMethodName=getMethodName+"get"+fristletter+colname[i].substring(1)+" ";//获得方法名称
 			}
@@ -255,22 +256,27 @@ public class SqlDao {
 	                	 for(int i=0;i<getMethodNames.length;i++) {
 	                setMethod=t.getClass().getMethod(getMethodNames[i], new Class[] {});// 获得方法
 	                val=setMethod.invoke(t, new Object[] {});//使用方法
+	                System.out.println(val);
 	                if(setMethod.getReturnType().equals(String.class)) {
 	                	if(val==null)
 	                		val="";
-	                	ps.setString(i+1, (String) val); 
+	                	ps.setString(i+1, (String)val); 
 	                }
 	                else
 	                if(setMethod.getReturnType().equals(int.class)) {
+	                
 	                	ps.setInt(i+1, (int) val); 
 	                }
 	                else
 	                if(setMethod.getReturnType().equals(java.util.Date.class)) {
 	                	java.util.Date da=(java.util.Date) setMethod.invoke(t, new Object[] {});
+	         
 	                	ps.setDate(i+1,new java.sql.Date(da.getTime()));
 	                }else
 	                	
-	                {ps.setString(i+1, (String) val);}
+	                {
+	         
+	                	ps.setString(i+1, (String) val);}
 	                	 }
 	                	 
 	                 }

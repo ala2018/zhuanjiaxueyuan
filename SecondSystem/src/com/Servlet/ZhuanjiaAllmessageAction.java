@@ -1,9 +1,11 @@
 package com.Servlet;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-import com.Business.LogonBusiness;
+
+import com.Business.ArticleBusiness;
 
 public class ZhuanjiaAllmessageAction extends HttpServlet {
     public ZhuanjiaAllmessageAction() {
@@ -21,13 +23,12 @@ public class ZhuanjiaAllmessageAction extends HttpServlet {
 		HttpSession session=req.getSession();
 		String whe=req.getParameter("zixunsousuo");
 		
-		String where=" where zhuanjia_user ='"+whe.trim()+"'";
-		 LogonBusiness zjd=new LogonBusiness();
+		 ArticleBusiness zjd=new ArticleBusiness();
                //SqlDao zjd=new SqlDao();
               // String sql="select *from Zhuanjia_table ";
               // String T="zhuanjia_user zhuanjia_name zhuanjia_sex zhuanjia_logindate";
-			session.setAttribute("zjlist", zjd.getAllmessage(where));
-			resp.sendRedirect("logo.jsp");
+			session.setAttribute("list", zjd.readallarticle());
+			resp.sendRedirect("show.jsp");
 	}
 
 }

@@ -8,6 +8,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 
+import com.Bean.ArticleBean;
+import com.Dao.SqlDao;
+
 
 public class FileBusiness {
 
@@ -39,6 +42,26 @@ public class FileBusiness {
 			outfile.close();
 			filesource.close();
 		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+		
+	}
+	
+	public boolean downloadArticle(String filename,OutputStream filesource) {
+		SqlDao sqldao =new SqlDao();
+		ArticleBean art=new ArticleBean();
+		String sql="select * from Article_table where [id]="+filename.trim();
+		     art=sqldao.getAllmessage(sql,art).get(0);
+				if(art==null) {
+					System.out.println("资源不存在!");
+			        return false;
+		}
+		try {		
+                filesource.write(art.getContents().getBytes());
+			filesource.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

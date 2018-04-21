@@ -47,7 +47,14 @@
 	<servlet-name>down</servlet-name>
 	<url-pattern>/Zhuanjia/Home/Downaction</url-pattern>
 </servlet-mapping>
-
+<servlet>
+  <servlet-name>downart</servlet-name>
+  <servlet-class>com.Servlet.DownArticleAction</servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>downart</servlet-name>
+	<url-pattern>/Zhuanjia/Home/Downarticle</url-pattern>
+</servlet-mapping>
 <servlet>
   <servlet-name>zhuceaction</servlet-name>
   <servlet-class>com.Servlet.ZhuceAction</servlet-class>
@@ -64,15 +71,29 @@
 	<servlet-name>publishaction</servlet-name>
 	<url-pattern>/Zhuanjia/Home/pubilsharticle</url-pattern>
 </servlet-mapping>
-
 <servlet>
-  <servlet-name>Verification</servlet-name>
-  <servlet-class>com.Servlet.MailAction</servlet-class>
+  <servlet-name>getartaction</servlet-name>
+  <servlet-class>com.Servlet.getMyArticleAction</servlet-class>
   </servlet>
 <servlet-mapping>
-	<servlet-name>Verification</servlet-name>
-	<url-pattern>/Zhuanjia/Home/Mailaction</url-pattern>
+	<servlet-name>getartaction</servlet-name>
+	<url-pattern>/Zhuanjia/Home/getmyArticle</url-pattern>
 </servlet-mapping>
 
-
+<servlet>
+  <servlet-name>getsearchaction</servlet-name>
+  <servlet-class>com.Servlet.CrawlerAction</servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>getsearchaction</servlet-name>
+	<url-pattern>/Zhuanjia/Home/getsearch</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>websocketaction</servlet-name>
+  <servlet-class>com.Servlet.WebSocketMessageServlet</servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>websocketaction</servlet-name>
+	<url-pattern>/websocket/*/*</url-pattern>
+</servlet-mapping>
 </web-app>

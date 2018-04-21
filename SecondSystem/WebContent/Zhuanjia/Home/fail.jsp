@@ -8,5 +8,6 @@
 </head>
 <body>
 密码或账户名错误！
+user=<%=request.getParameter("user")%>
 </body>
 </html>

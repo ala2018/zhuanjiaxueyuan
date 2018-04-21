@@ -30,60 +30,10 @@ line-height:30px;
     left: 100px;
     position: absolute;
 }
-p.yang{
-align:center;
-}
 </style>
 <script type="text/javascript">
-
-var httpRequest;
-var Verification_code=null ;
-
-//发送请求函数
-function sendRequest(url){
-   if(window.XMLHttpRequest)//非IE浏览器
-   {
-       httpRequest = new XMLHttpRequest();
-  
-   }else if (window.ActiveXObject)//IE浏览器
-    {
-         httpRequest = new ActiveXObject("Microsoft.XMLHHTTP");
-
-     }
-   alert(url);
-     httpRequest.open("post",url,true);
-     httpRequest.onreadystatechange = processResponse; //指定相应函数
-     httpRequest.send(null);
-
-}
-
-//处理返回信息函数
-function  processResponse(){
-  if(httpRequest.readyState == 4)//判断对象状态
-   {
-     if (httpRequest.status == 200)
-     {
-        Verification_code=httpRequest.responseText;
-        window.alert(Verification_code);
-      }else
-          {
-             window.alert("请求页面异常");
-          }
-    }
-
-}
-
-//发送验证码
-function mailCheck(){
-     
-     var usermail =document.getElementById("email").value;
-     var url="Mailaction?usermail="+usermail;
-     sendRequest(url);
-
-}
-
 function upperCase1()
-{
+{   
 	var x=document.getElementById("accout").value;
 	if(x.length<16&&x.length>1)
 		text1.innerHTML="用户名合法"; 
@@ -118,10 +68,7 @@ function upperCase4()
 	var pwd2=document.getElementById("pwd2");
 	var emailRegex = /^\w+@\w+(\.\w+)+$/;  
 	var c=document.getElementById("email").value;
-	
-	var code =document.getElementById("code").value;
-	
-	if(pwd1.value ==pwd2.value&&y.length<16&&y.length>1&&x.length<16&&x.length>1&&(z=="男"||z=="女")&&b!=""&&emailRegex.test(c)&& code == Verification_code )
+	if(pwd1.value ==pwd2.value&&y.length<16&&y.length>1&&x.length<16&&x.length>1&&(z=="男"||z=="女")&&b!=""&&emailRegex.test(c))
 		document.getElementById("zhuce").style.display="block";
 	
 }
@@ -173,9 +120,9 @@ function upperCase7()
 <form action="zhuce" method="post"> 
 <h2 align="center">用户注册</h2>
 <p align="center">用户名：<input type="text" name="accout1" id="accout" onblur="upperCase1()&upperCase4()"></p>
-<p id=text1 class="yang">用户名长度小于15字节</p>
+<p id=text1>用户名长度小于15字节</p>
 <p align="center">输入密码：<input type="password" name="pwd11" id="pwd1"  onblur="upperCase2()&upperCase4()"> </p>
-<p id=text2 align="center">请输入密码</p>
+<p id=text2>请输入密码</p>
 <p align="center">重复密码：<input type="password" id="pwd2" onblur="upperCase3()&upperCase4()"> </p>
 <p id=text3>确保两次输入的密码一致</p>
 <p align="center">姓名：<input type="text" name="name1" id="name"  onblur="upperCase7()&upperCase4()"> </p>
@@ -184,7 +131,6 @@ function upperCase7()
 <p id=text5>请输入您的性别</p>
  <p align="center">邮箱：<input type="text" name="email1" id="email" onblur="upperCase6()&upperCase4()"> </p>
 <p id=text6>请输入您的邮箱</p> 
- <p align="center">验证码：<input type="text" id="code"  onblur="upperCase4()"  >  <input type ="button" value="发送验证码" onclick ="mailCheck();"  ></p>
 <div id=zhuanjiaxueyuanxuanze>
 <p align="center">选择用户类别<br>
 

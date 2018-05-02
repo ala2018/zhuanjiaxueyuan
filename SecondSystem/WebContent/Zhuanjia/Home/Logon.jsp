@@ -31,13 +31,13 @@ line-height:30px;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SecondSystem</title>
+<title>登录页面</title>
 </head>
 <body>
 <div id=all>
 <img src="./Image/bg_night.jpg" width="1600" height="350" />
 <div id=biaoti>
-<p> Welcome to SecondSystem!Please login in.</p>
+<p>欢迎来到 SecondSystem!请登录</p>
 </div>
 <div id=denglujiemian>
 <form action="login" method="post">
@@ -53,6 +53,7 @@ line-height:30px;
 <input name=dl type="submit" value="登录">
 &emsp;
 <input name=qx type="reset" value="取消">
+<p align="center"><a href="http://localhost:8080/SecondSystem/Zhuanjia/Home/zhuce.jsp">注册</a></p>
 </div>
 </form>
 </div>

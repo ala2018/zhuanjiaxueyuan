@@ -26,9 +26,11 @@ public class ArticleBusiness {
 	/*
 	 * 搜索所有用户文章
 	 */
-	public List<ArticleBean> readallarticle(){
+	public List<ArticleBean> readallarticle(String size,String page){
 		SqlDao sqldao =new SqlDao();
-		String sql="select * from Article_table ";
+		String sql="select top "+size+" * from "+
+		"(select ROW_NUMBER() OVER (order by date desc) as rownumber ,* from Article_table ) "+
+				" as tableA where rownumber>"+Integer.valueOf(size)*(Integer.valueOf(page)-1);
 		return sqldao.getAllmessage(sql,new ArticleBean());
 	}
 	/*
@@ -52,7 +54,8 @@ public class ArticleBusiness {
 		  for(int i=0;i<list.size();i++) {
 			  builder.append("<fieldset class=\"showcontent\">");
 			  builder.append("<legend>").append(list.get(i).getClassification()).append("</legend>");
-		  builder.append("<div class=\"contentcolor\">");
+		  builder.append(" <div class=\"contentcolor\">");
+		  builder.append("<a href=\"\" onclick=\"pupmuen(this);return false\"><img  src=\"./Image/xiala.jpg\"></a>");
 		  id="d"+list.get(i).getId();
 		  builder.append("<h4 align=\"center\">").append(list.get(i).getTitle()).append("</h4>"); 
 		  builder.append("<div style=\"width:1100px;\">").append(transformhtml(list.get(i).getContents().substring(0, 100))).append("</div>");
@@ -77,11 +80,24 @@ public class ArticleBusiness {
 		 
 		  return builder.toString();
 	}
-	
+	/*
+	 * 将空格换行转为html标签
+	 * 
+	 */
 	public String transformhtml(String art){
 		String c=art.replaceAll(" ","&nbsp");
 		  c=c.replaceAll("\r\n","<br>");
 		  return c;
 	}
 	
+	/*
+	 * 根据id删除对应文章
+	 * 
+	 */
+	public int delarticle(String id) {
+		SqlDao sqldao =new SqlDao();
+		  String sql="delete from Article_table where id='"+id+"'";
+		  return  sqldao.Sql(sql,null);
+		 
+	}
 }

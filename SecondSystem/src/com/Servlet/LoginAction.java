@@ -1,15 +1,9 @@
 package com.Servlet;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-import com.Bean.ZhuanjiaBean;
 import com.Business.LogonBusiness;
-import com.Dao.*;
 public class LoginAction extends HttpServlet {
 
 	public LoginAction() {
@@ -50,6 +44,7 @@ public class LoginAction extends HttpServlet {
     		{
 		    	String page="personHome.jsp";
 		    	req.getSession().setAttribute("user", lgd.getUser_info());
+		    	req.getSession().setMaxInactiveInterval(-1);
 		    	resp.sendRedirect(page);
 	}
 	else {
@@ -59,19 +54,6 @@ public class LoginAction extends HttpServlet {
 			
 			
 		
-	/*	
-		List<ZhuanjiaBean> zjl=new ArrayList<ZhuanjiaBean>();
-		ZhuanjiaBean zh=new ZhuanjiaBean();
-		zh.setZhuanjia_user(user);
-		zh.setZhuanjia_pwd(pwd);
-		zh.setZhuanjia_logindate(new Date()); 
-		zh.setZhuanjia_name("java");
-		zh.setZhuanjia_sex("男");
-		zjl.add(zh);
-		
-		SqlDao sqldao=new SqlDao();
-		sqldao.insert("Zhuanjia_table", "(?,?,?,?,?)", zjl);
-		*/
 	}
      
 }

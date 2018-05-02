@@ -1,99 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5"
-   xmlns="http://java.sun.com/xml/ns/javaee"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
-   <!--  
-<resource-ref>
-<res-ref-name>jdbc/Second</res-ref-name>
-<res-type>javax.sql.DataSource</res-type>
-<res-auth>Container</res-auth>
-</resource-ref>
-  -->
-<servlet>
-  <servlet-name>Zhuanjiamessage</servlet-name>
-  <servlet-class>com.Servlet.ZhuanjiaAllmessageAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>Zhuanjiamessage</servlet-name>
-	<url-pattern>/Zhuanjia/Home/Zhuanjiamessage</url-pattern>
-</servlet-mapping>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!-- <resource-ref> <res-ref-name>jdbc/Second</res-ref-name> <res-type>javax.sql.DataSource</res-type> 
+		<res-auth>Container</res-auth> </resource-ref> -->
+	<servlet>
+		<servlet-name>articlemessage</servlet-name>
+		<servlet-class>com.Servlet.getAllarticleAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>articlemessage</servlet-name>
+		<url-pattern>/Zhuanjia/Home/Allarticlemessage</url-pattern>
+	</servlet-mapping>
 
 
-<servlet>
-  <servlet-name>loginaction</servlet-name>
-  <servlet-class>com.Servlet.LoginAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>loginaction</servlet-name>
-	<url-pattern>/Zhuanjia/Home/login</url-pattern>
-</servlet-mapping>
+	<servlet>
+		<servlet-name>loginaction</servlet-name>
+		<servlet-class>com.Servlet.LoginAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/login</url-pattern>
+	</servlet-mapping>
 
-<servlet>
-  <servlet-name>save</servlet-name>
-  <servlet-class>com.Servlet.SavefileAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>save</servlet-name>
-	<url-pattern>/Zhuanjia/Home/Savefile</url-pattern>
-</servlet-mapping>
+	<servlet>
+		<servlet-name>save</servlet-name>
+		<servlet-class>com.Servlet.SavefileAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>save</servlet-name>
+		<url-pattern>/Zhuanjia/Home/Savefile</url-pattern>
+	</servlet-mapping>
 
-<servlet>
-  <servlet-name>down</servlet-name>
-  <servlet-class>com.Servlet.DownfileAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>down</servlet-name>
-	<url-pattern>/Zhuanjia/Home/Downaction</url-pattern>
-</servlet-mapping>
-<servlet>
-  <servlet-name>downart</servlet-name>
-  <servlet-class>com.Servlet.DownArticleAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>downart</servlet-name>
-	<url-pattern>/Zhuanjia/Home/Downarticle</url-pattern>
-</servlet-mapping>
-<servlet>
-  <servlet-name>zhuceaction</servlet-name>
-  <servlet-class>com.Servlet.ZhuceAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>zhuceaction</servlet-name>
-	<url-pattern>/Zhuanjia/Home/zhuce</url-pattern>
-</servlet-mapping>
-<servlet>
-  <servlet-name>publishaction</servlet-name>
-  <servlet-class>com.Servlet.PublishArticleAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>publishaction</servlet-name>
-	<url-pattern>/Zhuanjia/Home/pubilsharticle</url-pattern>
-</servlet-mapping>
-<servlet>
-  <servlet-name>getartaction</servlet-name>
-  <servlet-class>com.Servlet.getMyArticleAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>getartaction</servlet-name>
-	<url-pattern>/Zhuanjia/Home/getmyArticle</url-pattern>
-</servlet-mapping>
+	<servlet>
+		<servlet-name>down</servlet-name>
+		<servlet-class>com.Servlet.DownfileAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>down</servlet-name>
+		<url-pattern>/Zhuanjia/Home/Downaction</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>downart</servlet-name>
+		<servlet-class>com.Servlet.DownArticleAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downart</servlet-name>
+		<url-pattern>/Zhuanjia/Home/Downarticle</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>zhuceaction</servlet-name>
+		<servlet-class>com.Servlet.ZhuceAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>zhuceaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/zhuce</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>publishaction</servlet-name>
+		<servlet-class>com.Servlet.PublishArticleAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>publishaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/pubilsharticle</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>getartaction</servlet-name>
+		<servlet-class>com.Servlet.getMyArticleAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getartaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/getmyArticle</url-pattern>
+	</servlet-mapping>
 
-<servlet>
-  <servlet-name>getsearchaction</servlet-name>
-  <servlet-class>com.Servlet.CrawlerAction</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>getsearchaction</servlet-name>
-	<url-pattern>/Zhuanjia/Home/getsearch</url-pattern>
-</servlet-mapping>
-<servlet>
-  <servlet-name>websocketaction</servlet-name>
-  <servlet-class>com.Servlet.WebSocketMessageServlet</servlet-class>
-  </servlet>
-<servlet-mapping>
-	<servlet-name>websocketaction</servlet-name>
-	<url-pattern>/websocket/*/*</url-pattern>
-</servlet-mapping>
+	<servlet>
+		<servlet-name>getsearchaction</servlet-name>
+		<servlet-class>com.Servlet.CrawlerAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getsearchaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/getsearch</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>getmailaction</servlet-name>
+		<servlet-class>com.Servlet.MailAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getmailaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/Mailaction</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>delartaction</servlet-name>
+		<servlet-class>com.Servlet.DeletemyArticleAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delartaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/DelArtaction</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>forumaction</servlet-name>
+		<servlet-class>com.Servlet.PublishForumAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>forumaction</servlet-name>
+		<url-pattern>/Zhuanjia/Home/pubilshforum</url-pattern>
+	</servlet-mapping>
 </web-app>

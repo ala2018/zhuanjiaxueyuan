@@ -231,7 +231,7 @@ public class SqlDao {
 		
 		
 		public <T> void insert(String table,String value,List<T> object) {
-			 String[] colname=getcolmName(table);
+			 String[] colname=getcolmName(table);   //获取这个表的所有属性名
 			String getMethodName="";
 			for(int i=0;i<colname.length;i++) {
 			//属性首字母转为大写。。。。。
@@ -320,7 +320,7 @@ public class SqlDao {
 		        }
 		    }
 		
-	    public  int Sql(String sql,List<String> params){     //支持sql增删改
+	    public  int Sql(String sql,List<String> params){     //支持sql删改
 	    	int rs=0;
 	  	  try {
 	            if (conn == null || conn.isClosed()) {
@@ -337,32 +337,7 @@ public class SqlDao {
 	    }
 
 
-	/*    public static void main(String[] args) {
-	    	int rs=0;
-	    	String sql="insert into Zhuanjia_table  values(?,?,?,?)";
-	    	List<String> parms = new ArrayList<String>();
-	    	SqlDao test =new SqlDao();
-	    	
-	    	parms.add("0631104");
-	    	parms.add("郭翔");
-	    	parms.add("男");
-	    	parms.add("2018-02-01");
-	    	parms.add("123456");
-	    	                                          //使用例子
-	    	rs =test.Sql(sql,parms);
-	    	
-	    	if(rs!= 0)
-	    		System.out.println("成功");
-	    	else
-	    		System.out.println("失败");
-	    	
-	    		
-	    	
-	    }
-		
-		*/
-		
-		
+			
 
 }
 

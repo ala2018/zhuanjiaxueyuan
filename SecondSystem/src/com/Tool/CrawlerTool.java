@@ -33,16 +33,16 @@ static String key=null;    //关键字
 		return key;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	static public void setKey(String k) {
+		key = k;
 	}
 
-	public Vector<String> getHtmlBuffer() {
+	static	public Vector<String> getHtmlBuffer() {
 		return htmlBuffer;
 	}
 
-	public void setHtmlBuffer(Vector<String> htmlBuffer) {
-		this.htmlBuffer = htmlBuffer;
+	static	public void setHtmlBuffer(Vector<String> hbuffer) {
+		htmlBuffer = hbuffer;
 	}
 
 	/*
@@ -116,7 +116,7 @@ static String key=null;    //关键字
 		      
 		    public  int getKOP(String x, String y){  
 		          
-		        char[] s1 = x.toCharArray();  
+		        char[] s1 = x.toCharArray(); 
 		        char[] s2 = y.toCharArray();  
 		        int[][] array = new int[x.length()+1][y.length()+1];//此处的棋盘长度要比字符串长度多加1，需要多存储一行0和一列0  
 		                  
@@ -137,8 +137,8 @@ static String key=null;    //关键字
 		            }  
 		        }  
 		                      int k=0;
-		        for(int j = 0; j < array[0].length; j++){ 
-		        	if(array[array.length][j]>=2)
+		        for(int j = 0; j < array[0].length; j++){ //array[0].length 列长度
+		        	if(array[array.length][j]>=2)         //array.length 行长度
 		        		k++;
 		        }     
 		                 
@@ -269,7 +269,7 @@ static String key=null;    //关键字
 		             // 休息10秒
 		             //Thread.sleep(10 * 1000);
 		           
-		             System.out.println("休息10秒");
+		            // System.out.println("休息10秒");
 		          
 		             // 停止爬取
 		             //controller.shutdown();

@@ -8,88 +8,103 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 <style>
-
-#bg{
-position: absolute;
-top:0px;
-left:0px;
-width:1200px;
-bottom:0px;
-  height:1600px;
+#bg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1200px;
+	bottom: 0px;
+	height: 1600px;
 }
+
 #zuolan {
-    line-height:30px;
-    background-color:#eeeeee;
-     position: absolute;
-    height:420px;
-    width:220px;
-    top:0px;
-    float:left;
-    padding:5px;
-    border:1px solid #000;	      
+	line-height: 30px;
+	background-color: #eeeeee;
+	position: absolute;
+	width: 220px;
+	top: 0px;
+	float: left;
+	padding: 5px;
+	border: 1px solid #000;
 }
 
-
-#img1
-{
-position:absolute;
-top:0px;
-right:0px;
+#img1 {
+	position: absolute;
+	top: 0px;
+	right: 0px;
 }
-#img2
-{
-position:absolute;
-bottom:0px;
-right:0px;
+
+#img2 {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
 }
 
 div.caidan {
-    top:0px;
-    background-color:#F0F8FF;
-     position: absolute;
-    height:20px;
-    width:1150px;
-    margin-left:230px;
-    border:0px solid #000;	      
-}
-div.show {
-     position: absolute;
-        top:20px;
-    width:1150px;
-    margin-left:230px;
-    border:1px solid #000000;	      
+	top: 0px;
+	background-color: #F0F8FF;
+	position: absolute;
+	height: 20px;
+	width: 1150px;
+	margin-left: 230px;
+	border: 0px solid #000;
 }
 
-a.yang{text-decoration:none;
-    background-color:#F0F8FF;
-    position: relative;
-    margin-left:20px;
+div.show {
+	position: absolute;
+	top: 20px;
+	width: 1150px;
+	margin-left: 230px;
+	border: 1px solid #000000;
 }
-div.contentcolor{
-border:1px solid red;
+
+a.yang {
+	text-decoration: none;
+	background-color: #F0F8FF;
+	position: relative;
+	margin-left: 20px;
 }
+
+div.contentcolor {
+	border: 1px solid red;
+}
+
 div.showpage {
-    background-color:#F0F8FF;
-     position: absolute;
-    float:right;
-     text-align:right;
-    height:35px;
-    width:1150px;
-    border:1px solid #000000;
-     margin-right:20px;	      
+	background-color: #F0F8FF;
+	position: absolute;
+	float: right;
+	text-align: right;
+	height: 35px;
+	width: 1150px;
+	border: 1px solid #000000;
+	margin-right: 20px;
 }
-p.page span{
-   	font-weight:bold;
-   	float:right;
-   	margin-right:20px;
-	color:#ff9955;
+
+p.page span {
+	font-weight: bold;
+	float: right;
+	margin-right: 20px;
+	color: #ff9955;
 }
-fieldset.showcontent{
-    width:1100px;
-    border:4px solid blue;
+
+fieldset.showcontent {
+	width: 1100px;
+	border: 4px solid blue;
+}
+
+div.tanchu {
+	position: absolute;
+	float: right;
+	height: 40px;
+	width: 50px;
+	margin-left: 20px;
+	z-index: 2000;
+	border: 1px solid #000000;
 }
 </style>
-<%UserBean user=(UserBean)session.getAttribute("user"); %>
+<%
+   UserBean user=(UserBean)session.getAttribute("user");
+   %>
 <title>欢迎<%=user.getName()%>来到个人主页!</title>
 
 <script type="text/javascript">
@@ -97,10 +112,10 @@ var http_request;
 var page=1;
 var userid="";
 var username
-function inti(id,name){
-	userid=id;
-	username=name;
-	linksocket();
+function inti(){
+	userid="<%=user.getUser()%>";
+	username="<%=user.getName()%>";
+	//linksocket();
 	getmyArticle();
 }
 function getmyArticle()
@@ -200,9 +215,9 @@ function initSocket() {
     }  
   
     if (window.location.protocol == 'http:') {
-    	webSocket = new WebSocket("ws://127.0.0.1:8080/websocket/" + userid + "/" + username);
+    	webSocket = new WebSocket("ws://127.0.0.1:8080/SecondSystem/"+userid+"/"+username);
     } else {
-    	  webSocket = new WebSocket("wss://127.0.0.1:8080/websocket?userId=" + userid + "&username=" + username); 
+    	  webSocket = new WebSocket("wss://127.0.0.1:8080/SecondSystem?userId=" + userid + "&username=" + username); 
     }
    
       
@@ -214,7 +229,7 @@ function initSocket() {
       
     // 异常  
     webSocket.onerror = function (event) { 
-    	alert("onerror event:"+event);
+    	alert("onerror event:"+event.data);
         console.log(event);  
     };  
       
@@ -239,9 +254,89 @@ function initSocket() {
     };  
   
 }
+
+function pupmuen(obj){
+	var parent = obj.parentNode;
+	var list=parent.childNodes;
+	if(list.length==7){
+	       var html=obj.innerHTML;
+	obj.innerHTML=html+"<div class='tanchu'><a href='' onclick='delcontent(this);return false'><i>删除</i></a><br><a href='' onclick='nonemy(this);return false'><i>隐藏</i></a></div>";
+	 parent.insertBefore(obj.lastChild,obj.nextSibling);
+      }
+	else
+	{
+		obj.nextSibling.style.display="block";
+		}
+}
+
+function nonemy(obj){
+	obj.parentNode.style.display="none";
+}
+
+function delcontent(obj){
+	var objlist=obj.parentNode.parentNode.childNodes;
+	var id=objlist[4].id.substring(1);
+	var url="DelArtaction?id="+id;
+	obj.parentNode.style.display="none";
+	createdelArticle(url);
+	
+}
+
+/*
+ * del的ajax
+ */
+function createdelArticle(url){
+	http_request=false;
+	if(window.XMLHttpRequest)
+	{
+		http_request=new XMLHttpRequest();
+	}else if(window.ActiveXObject)
+		{
+		try{
+			http_request=new ActiveXObject("Msxml2.XMLHTTP");
+		}catch(e){
+			try{
+				http_request=ActiveXObject("Microsoft.XMLHTTP");
+			}catch(e){
+				window.alert("无法创建request对象");
+			}
+			
+		}
+		}
+	http_request.onreadystatechange=getdelresult;
+	http_request.open("GET",url,true);
+	http_request.send(null);
+}
+
+/*
+ * del回调函数
+ */
+ function getdelresult(){
+		
+		if(http_request.readyState==4)
+		{
+			if(http_request.status==200)
+			{
+			var id=http_request.responseText;
+			alert(id);
+			if(id=="0")
+                  {alert("删除失败");}
+			else
+				{
+				    alert("删除成功");
+				    //var obj=document.getElementById("D"+id).parentNode.parentNode;
+				     //obj.parentNode.removeChild(obj);
+				    
+				}
+			}
+		}else
+		{
+		        // alert("请求出现错误!");	
+		}
+	}
 </script>
 </head>
-<body onload="inti(use.user.value,use.username.value)">
+<body onload="inti()">
 <form id="use" name="use" action="" method="post" style=display:none>
 <p align="center">用户：<input type="text" name="user" id="user" value=<%=user.getUser()%>></p>
 <p align="center">用户名：<input type="text" name="username" id="username" value=<%=user.getName()%>></p>
@@ -250,18 +345,20 @@ function initSocket() {
 <!-- <img id=img2 src="./Image/111.jpg" width="1200" height="500">-->
 <div id=all>
 <div id=zuolan>
-<img src="./Image/timg.jpg" width=100% height="200" />
+<img src="./Image/timg.gif" width=100% height="200" />
 <div id=touxianganniu>
 <input id=touxiang type="submit" value="点击上传" >
 </div>
 <div id=chaolianjie     style="margin-left:20px;">
+<ul>
 <li><a href="" >个人研究成果</a></li>
 <li><a href="" >个人关注</a></li>
 <li><a href="" >问答平台</a></li>
 <li><a href="logo.jsp" >资讯获取</a></li>
-<li><a href= >论坛中心</a></li>
+<li><a href=./fatie.jsp?<%="user="+user.getUser()%>>发布帖子</a></li>
 <li><a href=./fabiaowenzhang.jsp?<%="user="+user.getUser()%>>发表文章</a></li>
-<li><a href=Zhuanjiamessage >浏览文章</a></li>
+<li><a href=Allarticlemessage?page=1>浏览文章</a></li>
+</ul>
 </div>
 </div>
 <div id=caidan class="caidan">

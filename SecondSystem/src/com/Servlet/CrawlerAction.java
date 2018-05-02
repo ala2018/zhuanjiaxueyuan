@@ -63,11 +63,11 @@ public class CrawlerAction extends HttpServlet {
 	  		    	this.resp=resp;
 	  		    }
 			public void run() {
-				while (i<2000){
+				while (i<200){
 					   i++;
 					try {   
 						    System.out.println(i);
- 		                     if(i>1998)
+ 		                     if(i>198)
 		                    	 con.shutdown();
 		                     if(buffer.size()!=0)
 		                     {  try {

@@ -25,7 +25,6 @@ public class getMyArticleAction extends HttpServlet {
 		String page=req.getParameter("page");
 		ArticleBusiness artb=new ArticleBusiness();
 		String xml=artb.getmyarticle(user,"3",page);
-
 	   resp.getWriter().println(xml);
 	}
 }

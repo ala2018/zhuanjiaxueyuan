@@ -15,7 +15,7 @@ import javax.websocket.server.ServerEndpoint;
 import com.Tool.WebSocketTool;
 
 
-@ServerEndpoint(value = "/websocket/{userId}/{username}")
+@ServerEndpoint(value = "/SecondSystem/{userId}/{username}")
 public class WebSocketMessageServlet {
     private Session session;  
     private static final Logger sysLogger = Logger.getLogger("sysLog"); 

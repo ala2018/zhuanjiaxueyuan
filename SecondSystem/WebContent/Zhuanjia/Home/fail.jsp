@@ -7,7 +7,9 @@
 <title>------Login----</title>
 </head>
 <body>
-密码或账户名错误！
-user=<%=request.getParameter("user")%>
+<p align="center">密码或账户名错误!</p>
+
+<p align="center"><a href="http://localhost:8080/SecondSystem/Zhuanjia/Home/Logon.jsp">返回登录</a></p>
+
 </body>
 </html>

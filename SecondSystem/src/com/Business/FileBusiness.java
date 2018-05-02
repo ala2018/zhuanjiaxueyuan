@@ -15,7 +15,7 @@ import com.Dao.SqlDao;
 public class FileBusiness {
 
 	public boolean savefile(String filename,InputStream filesource) {
-		File newf =new File("D:/workspace/SecondSystem/WebContent/Data/"+filename);
+		File newf =new File("F:/Eclipse for Java EE/eclipse-workspace/SecondSystem/WebContent/Data/"+filename);
 		
 		
 		if(!newf.exists()) {
@@ -71,7 +71,7 @@ public class FileBusiness {
 	}
 	
 	public boolean downloadfile(String filename,OutputStream filesource) {
-		File newf =new File("D:/workspace/SecondSystem/WebContent/Data/"+filename);
+		File newf =new File("F:/Eclipse for Java EE/eclipse-workspace/SecondSystem/WebContent/Data/"+filename);
 		if(!newf.exists()) {
 					System.out.println("资源不存在!");
 			        return false;
@@ -102,7 +102,7 @@ public class FileBusiness {
 		if(savefile(temp,filesource))
 		{
 			try {
-				File tem=new File("D:/workspace/SecondSystem/WebContent/Data/temp");
+				File tem=new File("F:/Eclipse for Java EE/eclipse-workspace/SecondSystem/WebContent/Data/temp");
 				RandomAccessFile randfile=new RandomAccessFile(tem,"r");
 			    randfile.readLine();
 			    String str=randfile.readLine();
@@ -136,7 +136,7 @@ public class FileBusiness {
 			    }
 			    
 			    
-			    File newf=new File("D:/workspace/SecondSystem/WebContent/Data/"+filename);
+			    File newf=new File("F:/Eclipse for Java EE/eclipse-workspace/SecondSystem/WebContent/Data/"+filename);
 			    if(!newf.exists()) {
 			    	if(!newf.createNewFile()) {
 			    	randfile.close();

@@ -35,9 +35,9 @@ public class PublishArticleAction extends HttpServlet {
 	     ArticleBean artbean=new ArticleBean();
 	     Date date=new Date();
 	     artbean.setDate(date);
-	     artbean.setTitle(req.getParameter("title"));
+	     artbean.setTitle("《"+req.getParameter("title").trim()+"》");
 	     artbean.setId((int)((Math.random()*9+1)*10000));
-	     artbean.setContents(req.getParameter("contents"));
+	     artbean.setContents(req.getParameter("contents").trim());
 	     artbean.setClassification(req.getParameter("Classification"));
 	     artbean.setAuthor(req.getParameter("author"));
 	     List<ArticleBean> list=new ArrayList<ArticleBean>();

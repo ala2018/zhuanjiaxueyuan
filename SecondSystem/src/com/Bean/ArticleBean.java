@@ -35,7 +35,10 @@ public class ArticleBean {
 		this.title = title;
 	}
 	public String getContents() {
-		return contents;
+		  if(contents.length()>2000)
+		    return contents.substring(0, 1999);
+		  else
+		  return contents;
 	}
 	public void setContents(String contents) {
 		this.contents = contents;

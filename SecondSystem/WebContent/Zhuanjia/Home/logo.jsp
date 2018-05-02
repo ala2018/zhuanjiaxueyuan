@@ -59,7 +59,8 @@ function search()
 		document.getElementById("showsousuo").innerHTML="<p align=\"center\">正在搜索</p>";
 		var url="getsearch?key="+document.getElementById("sousuokey").value;
 		 window.alert(url);
-		createsearch(url);
+		 var uri=encodeURI(url);
+		createsearch(uri);
 		}
 }
 /*
@@ -83,9 +84,9 @@ function createsearch(url){
 			
 		}
 		}
-	          window.alert(url);
+	         // window.alert(url);
 	http_request.onreadystatechange=getsearchresult;
-	http_request.open("POST",url,true);
+	http_request.open("post",url,true);
 	http_request.send(null);
 }
 
@@ -120,18 +121,18 @@ function createsearch(url){
 </div>
 <div id="左栏">
 <div id="wd">
-<h3>问答平台</h3>
+<h3>个人主页</h3>
 <ul>
-<li><a href="">平台入口</a></li>
+<li><a href="http://localhost:8080/SecondSystem/Zhuanjia/Home/personHome.jsp">个人中心</a></li>
 </ul>
 </div>
 <div id="tl">
 <h3>学术交流平台</h3>
 <ul>
 <li><a href=fabiaowenzhang.jsp >发表文章</a></li>
-<li><a href= >发起讨论</a></li>
-<li><a href=/SecondSystem/tieziliulan.jsp>平台入口</a></li>
-<li><a href=/SecondSystem/tieziliulan.jsp>推介个人研究成果</a></li>
+<li><a href="" >发起讨论</a></li>
+<li><a href="">平台入口</a></li>
+<li><a href="">推介个人研究成果</a></li>
 </ul>
 </div>
 <div>
